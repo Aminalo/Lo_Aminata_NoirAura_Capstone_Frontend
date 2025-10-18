@@ -1,26 +1,26 @@
 import { createContext, useMemo, useContext } from "react";
 import { useCookies } from "react-cookie";
-import axios from "axios";
+import api, { API_BASE } from "../../lib/api";
 
 export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   const [cookies, setCookie, removeCookie] = useCookies();
-  const baseURL = "http://localhost:4000/api/auth"; // ✅ Backend endpoint
 
-  // REGISTER NEW USER
+  // REGISTER
   async function signUp(formData) {
-    const res = await axios.post(`${baseURL}/signup`, formData);
-    setCookie("token", res.data.token, { path: "/" });
+    const res = await api.post(`/auth/signup`, formData);
+    // store token if backend returns it (if not, you can do a login immediately after signup)
+    if (res.data?.token) setCookie("token", res.data.token, { path: "/" });
   }
 
-  // LOGIN EXISTING USER
+  // LOGIN
   async function login(formData) {
-    const res = await axios.post(`${baseURL}/login`, formData);
+    const res = await api.post(`/auth/login`, formData);
     setCookie("token", res.data.token, { path: "/" });
   }
 
-  // LOGOUT USER
+  // LOGOUT
   function logout() {
     removeCookie("token", { path: "/" });
   }
@@ -31,6 +31,7 @@ export default function AuthProvider({ children }) {
       login,
       signUp,
       logout,
+      API_BASE,
     }),
     [cookies]
   );
@@ -38,7 +39,6 @@ export default function AuthProvider({ children }) {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
-// Custom hook shortcut
 export function useAuth() {
   return useContext(AuthContext);
 }
