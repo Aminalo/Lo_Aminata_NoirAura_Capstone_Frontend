@@ -1,0 +1,26 @@
+import "./index.css";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/authContext/authContext";
+
+const Navbar = () => {
+  const { cookies, logout } = useAuth();
+  const nav = useNavigate();
+
+  function handleLogout() {
+    logout();
+    nav("/auth");
+  }
+
+  return (
+    <nav className="navbar">
+      <Link to="/salons">Salons</Link>
+      {cookies.token ? (
+        <button onClick={handleLogout}>Logout</button>
+      ) : (
+        <Link to="/auth">Login</Link>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
