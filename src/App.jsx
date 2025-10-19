@@ -5,9 +5,10 @@ import { useAuth } from "./contexts/authContext/authContext";
 // Pages & Components
 import AuthPage from "./pages/auth/index";
 import SalonList from "./pages/salons/index";
-import NotFound from "./pages/NotFound";
 import Navbar from "./components/navbar/index";
 import ProtectedRoutes from "./components/protected_routes/ProtectedRoutes";
+import NotFound from "./pages/NotFound.jsx";
+
 
 export default function App() {
   const { cookies } = useAuth();

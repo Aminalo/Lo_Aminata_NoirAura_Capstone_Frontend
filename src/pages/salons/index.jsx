@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./salons.css";
 
-
 export default function SalonList() {
   const [salons, setSalons] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -9,40 +8,45 @@ export default function SalonList() {
   useEffect(() => {
     async function fetchSalons() {
       try {
-        const res = await fetch("http://localhost:4000/api/salons");
+        const res = await fetch(
+          import.meta.env.VITE_API_BASE
+            ? `${import.meta.env.VITE_API_BASE}/salons`
+            : "http://localhost:4000/api/salons"
+        );
         const data = await res.json();
-        setSalons(data);
+        setSalons(Array.isArray(data) ? data : []);
       } catch (err) {
         console.error("Error fetching salons:", err);
       } finally {
         setLoading(false);
       }
     }
-
     fetchSalons();
   }, []);
 
-  if (loading) return <p>Loading salons...</p>;
+  if (loading) return <p className="loading">Loading salons...</p>;
 
   return (
     <section className="salon-list">
       <h1>Available Salons</h1>
       <div className="grid">
         {salons.map((s) => (
-          <div key={s._id} className="card">
+          <div key={s._id || s.name} className="card">
             <img
               src={s.photo || "https://placehold.co/400x300?text=NoirAura"}
               alt={s.name}
             />
-            <h2>{s.name}</h2>
-            <p>{s.city}</p>
-            <ul>
-              {s.services.map((srv, i) => (
-                <li key={i}>
-                  {srv.name} — ${srv.price}
-                </li>
-              ))}
-            </ul>
+            <div className="body">
+              <h2>{s.name}</h2>
+              <p className="city">{s.city}</p>
+              <ul className="services">
+                {(s.services || []).map((srv, i) => (
+                  <li key={i}>
+                    {srv.name} — ${srv.price}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         ))}
       </div>
