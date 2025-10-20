@@ -4,6 +4,11 @@ import { Outlet, Navigate } from "react-router-dom";
 export default function ProtectedRoutes() {
   const { cookies } = useAuth();
 
-  // If token exists, show the protected page; else redirect to /auth
-  return cookies.token ? <Outlet /> : <Navigate to="/auth" replace />;
+  // If no token in cookies, redirect to /auth
+  if (!cookies.token) {
+    return <Navigate to="/auth" replace />;
+  }
+
+  // Otherwise, allow access
+  return <Outlet />;
 }

@@ -1,8 +1,8 @@
-import "./index.css";
+import "./index.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext/authContext";
 
-const Navbar = () => {
+export default function Navbar() {
   const { cookies, logout } = useAuth();
   const nav = useNavigate();
 
@@ -12,15 +12,16 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="navbar">
-      <Link to="/salons">Salons</Link>
+    <nav style={{ display: "flex", gap: "1rem", padding: "10px" }}>
+      <Link to="/">Home</Link>
       {cookies.token ? (
-        <button onClick={handleLogout}>Logout</button>
+        <>
+          <Link to="/dashboard">Dashboard</Link>
+          <button onClick={handleLogout}>Logout</button>
+        </>
       ) : (
         <Link to="/auth">Login</Link>
       )}
     </nav>
   );
-};
-
-export default Navbar;
+}
