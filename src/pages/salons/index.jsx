@@ -1,55 +1,50 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "./salons.css";
 
 export default function SalonList() {
-  const [salons, setSalons] = useState([]);
-  const [loading, setLoading] = useState(true);
+    const [salons, setSalons] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
-  useEffect(() => {
-    async function fetchSalons() {
-      try {
-        const res = await fetch(
-          import.meta.env.VITE_API_BASE
-            ? `${import.meta.env.VITE_API_BASE}/salons`
-            : "http://localhost:4000/api/salons"
-        );
-        const data = await res.json();
-        setSalons(Array.isArray(data) ? data : []);
-      } catch (err) {
-        console.error("Error fetching salons:", err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchSalons();
-  }, []);
+    useEffect(() => {
+        async function fetchSalons() {
+            try {
+                const res = await axios.get("http://localhost:4000/api/salons");
+                setSalons(res.data);
+            } catch (err) {
+                console.error("❌ Failed to fetch salons:", err);
+                setError("Could not load salon data");
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchSalons();
+    }, []);
 
-  if (loading) return <p className="loading">Loading salons...</p>;
+    if (loading) return <p>Loading salons...</p>;
+    if (error) return <p>{error}</p>;
 
-  return (
-    <section className="salon-list">
-      <h1>Available Salons</h1>
-      <div className="grid">
-        {salons.map((s) => (
-          <div key={s._id || s.name} className="card">
-            <img
-              src={s.photo || "https://placehold.co/400x300?text=NoirAura"}
-              alt={s.name}
-            />
-            <div className="body">
-              <h2>{s.name}</h2>
-              <p className="city">{s.city}</p>
-              <ul className="services">
-                {(s.services || []).map((srv, i) => (
-                  <li key={i}>
-                    {srv.name} — ${srv.price}
-                  </li>
+    return (
+        <div className="salon-container">
+            <h1>NoirAura Salons</h1>
+            <div className="salon-grid">
+                {salons.map((salon) => (
+                    <div key={salon._id} className="salon-card">
+                        <img src={salon.photo} alt={salon.name} />
+                        <h2>{salon.name}</h2>
+                        <p>📍 {salon.city}</p>
+                        <h4>Services:</h4>
+                        <ul>
+                            {salon.services.map((s, i) => (
+                                <li key={i}>
+                                    {s.name} - ${s.price} ({s.duration} min)
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 ))}
-              </ul>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
+        </div>
+    );
 }

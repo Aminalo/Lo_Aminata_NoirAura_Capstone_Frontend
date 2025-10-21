@@ -1,0 +1,49 @@
+.home-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fef8f6;
+  padding: 4rem 6rem;
+  height: 90vh;
+}
+
+.home-text {
+  max-width: 45%;
+}
+
+.home-text h1 {
+  font-size: 2.8rem;
+  color: #3d1f1f;
+  line-height: 1.3;
+  font-family: "Playfair Display", serif;
+}
+
+.home-text p {
+  margin-top: 1.2rem;
+  font-size: 1.1rem;
+  color: #6d4e4e;
+  line-height: 1.6;
+}
+
+.cta-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  background-color: #a86556;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.cta-btn:hover {
+  background-color: #8d4c3d;
+}
+
+.home-image img {
+  width: 480px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}

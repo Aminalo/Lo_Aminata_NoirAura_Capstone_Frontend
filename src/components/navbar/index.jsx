@@ -1,6 +1,6 @@
-import "./index.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext/authContext";
+import "./navbar.css";
 
 export default function Navbar() {
   const { cookies, logout } = useAuth();
@@ -12,16 +12,22 @@ export default function Navbar() {
   }
 
   return (
-    <nav style={{ display: "flex", gap: "1rem", padding: "10px" }}>
-      <Link to="/">Home</Link>
-      {cookies.token ? (
-        <>
-          <Link to="/dashboard">Dashboard</Link>
-          <button onClick={handleLogout}>Logout</button>
-        </>
-      ) : (
-        <Link to="/auth">Login</Link>
-      )}
+    <nav className="navbar">
+      {}
+      <Link to="/" className="logo">NoirAura</Link>
+
+      {}
+      <div className="nav-links">
+        <Link to="/about">About</Link>
+        {cookies.token ? (
+          <>
+            <Link to="/salons">Salons</Link>
+            <button className="logout-btn" onClick={handleLogout}>Logout</button>
+          </>
+        ) : (
+          <Link to="/auth">Login</Link>
+        )}
+      </div>
     </nav>
   );
 }
