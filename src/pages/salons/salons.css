@@ -1,42 +1,149 @@
 .salon-list {
-    padding: 2rem;
+  background-color: var(--na-bg);
+  padding: 2rem 0 3rem;
 }
 
-.loading {
-    padding: 2rem;
-    text-align: center;
+/* Page Title */
+.salon-title {
+  font-family: "Playfair Display", serif;
+  color: var(--na-brown);
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
 }
 
-.grid {
-    display: grid;
-    gap: 1.25rem;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+/* Grid container */
+.salon-grid {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+  padding: 0 1.2rem;
 }
 
-.card {
-    border: 1px solid #ececec;
-    border-radius: 10px;
-    overflow: hidden;
-    background: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
+/* Salon Card */
+.salon-card {
+  background-color: #fffdfc;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(90, 65, 65, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
+.salon-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(90, 65, 65, 0.15);
 }
 
-.card .body {
-    padding: 1rem;
+/* Image Section */
+.salon-img-wrap {
+  height: 200px;
+  overflow: hidden;
 }
 
-.card .city {
-    color: #666;
-    margin: 0.25rem 0 0.75rem;
+.salon-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
-.services {
-    padding-left: 1rem;
+.salon-card:hover .salon-img-wrap img {
+  transform: scale(1.05);
+}
+
+/* Card Body */
+.salon-body {
+  padding: 1.2rem 1.4rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.salon-name {
+  font-family: "Playfair Display", serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--na-brown);
+  margin-bottom: 0.3rem;
+}
+
+.salon-city {
+  font-family: "Poppins", sans-serif;
+  color: #a07568;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+/* Services Section */
+.salon-services h3 {
+  font-family: "Playfair Display", serif;
+  color: var(--na-brown);
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.salon-services ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.salon-services li {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  color: #745852;
+  padding: 4px 0;
+}
+
+/* CTA Button */
+.salon-cta {
+  margin-top: auto;
+  background-color: var(--na-accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.05s ease;
+}
+
+.salon-cta:hover {
+  background-color: #8d4c3d;
+}
+
+.salon-cta:active {
+  transform: translateY(1px);
+}
+
+.salon-loading,
+.salon-error,
+.salon-empty {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: var(--na-brown);
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.salon-error {
+  color: #a34747;
+}
+
+@media (max-width: 768px) {
+  .salon-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .salon-title {
+    font-size: 1.8rem;
+  }
 }
