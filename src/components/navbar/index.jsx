@@ -22,6 +22,7 @@ export default function Navbar() {
         {cookies.token ? (
           <>
             <Link to="/salons">Salons</Link>
+            <Link to="/favorites">Favorites</Link>
             <button className="logout-btn" onClick={handleLogout}>Logout</button>
           </>
         ) : (

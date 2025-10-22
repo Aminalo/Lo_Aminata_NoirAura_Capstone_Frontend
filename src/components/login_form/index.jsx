@@ -22,26 +22,19 @@ const LoginForm = ({ setNewUser }) => {
   }
 
   return (
-    <div className="forms">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit} onChange={handleChange} autoComplete="off">
-        <label htmlFor="email">Email: </label>
-        <input type="email" id="email" name="email" placeholder="Email" />
-        <label htmlFor="password">Password: </label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-          minLength="6"
-        />
-        <input type="submit" value="Log In" />
-      </form>
-      <p>
-        Don’t have an account?{" "}
-        <button onClick={() => setNewUser(true)}>Sign Up</button>
-      </p>
-    </div>
+    <form className="auth-form" onSubmit={handleSubmit} onChange={handleChange} autoComplete="off">
+      <div>
+        <label htmlFor="email">Email</label>
+        <input className="auth-input" type="email" id="email" name="email" placeholder="you@example.com" />
+      </div>
+
+      <div>
+        <label htmlFor="password">Password</label>
+        <input className="auth-input" type="password" id="password" name="password" placeholder="••••••••" />
+      </div>
+
+      <button className="auth-submit" type="submit">Sign in</button>
+    </form>
   );
 };
 

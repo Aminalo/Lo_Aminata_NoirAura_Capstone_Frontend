@@ -7,6 +7,7 @@ import Home from "./pages/home/index.jsx";
 import About from "./pages/about/index.jsx";
 import AuthPage from "./pages/auth/index.jsx";
 import SalonList from "./pages/salons/index.jsx";
+import FavoritesPage from "./pages/favorites/index.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import ProtectedRoutes from "./components/protected_routes/ProtectedRoutes.jsx";
 
@@ -29,6 +30,8 @@ export default function App() {
             cookies.token ? <Navigate to="/salons" replace /> : <AuthPage />
           }
         />
+        <Route path="/favorites" element={<FavoritesPage />} />
+
 
         {/* Protected */}
         <Route element={<ProtectedRoutes />}>

@@ -38,7 +38,7 @@ export default function About() {
           <p>
             NoirAura was born from a deep desire to redefine beauty through
             simplicity, authenticity, and grace. Every product and experience is
-            crafted to empower women to feel elegant, confident, and radiant —
+            crafted to empower women to feel elegant, confident, and radiant
             inside and out.
           </p>
           <p>
