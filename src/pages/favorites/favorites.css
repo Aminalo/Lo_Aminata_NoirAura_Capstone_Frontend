@@ -175,3 +175,33 @@
 .salon-img-wrap {
   position: relative; /* ensure the heart stays in place */
 }
+
+.fav-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.delete-one-btn,
+.bulk-delete-btn {
+  background: var(--na-accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.delete-one-btn:hover,
+.bulk-delete-btn:hover {
+  background: #8d4c3d;
+}
+
+.bulk-delete-btn {
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
