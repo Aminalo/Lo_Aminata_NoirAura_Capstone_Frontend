@@ -21,7 +21,7 @@ export default function App() {
         {/* Landing: if logged in, skip to salons */}
         <Route path="/" element={<Home />} />
 
-        {/* Public */}
+        {}
         <Route path="/about" element={<About />} />
         <Route
           path="/auth"

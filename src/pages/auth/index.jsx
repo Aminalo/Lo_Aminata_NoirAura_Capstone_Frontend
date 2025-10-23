@@ -1,8 +1,7 @@
 import { useState } from "react";
 import LoginForm from "../../components/login_form/index";
 import SignUp from "../../components/signup_form/index";
-import "./style.css";                      // NEW line
-import bgImg from "../../assets/background.jpg"; // use your white-ish image
+import "./style.css";  
 
 const AuthPage = () => {
   const [newUser, setNewUser] = useState(false);

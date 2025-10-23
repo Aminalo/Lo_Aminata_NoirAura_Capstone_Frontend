@@ -26,7 +26,7 @@ html, body {
 .auth-card {
   position: relative;
   z-index: 1;
-  width: min(90vw, 820px);        /* ⬅️ takes 90% of width but stops at 820px */
+  width: min(90vw, 820px);        
   margin: 0 auto;
 
   background: #ffffffee;
@@ -114,7 +114,6 @@ html, body {
   padding: 0 4px;
 }
 
-/* === RESPONSIVE === */
 @media (max-width: 640px) {
   .auth-card {
     width: 95%;

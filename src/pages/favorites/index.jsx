@@ -69,7 +69,7 @@ export default function FavoritesPage() {
     <section className="salon-list">
       <h1 className="salon-title">Your Favorite Salons</h1>
 
-      {/* Bulk delete button */}
+      {}
       {selected.length > 0 && (
         <div style={{ textAlign: "center", marginBottom: "1rem" }}>
           <button className="bulk-delete-btn" onClick={deleteSelected}>

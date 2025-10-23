@@ -73,7 +73,7 @@ export default function SalonList() {
             <div className="salon-img-wrap">
               <img src={s.photo} alt={s.name} />
 
-              {/* ❤️ Heart button top-right */}
+              {/* Heart button top-right */}
               {token && (
                 <button
                   className="heart-btn"
