@@ -134,7 +134,7 @@ frontend/
  │   ├─ lib/api.js
  │   └─ App.jsx
 
-**Backend:** [Open the backend folder](./backend/)
+**Backend:** [Open the backend folder](../backend/)
 
 
 # How to Run the Project
