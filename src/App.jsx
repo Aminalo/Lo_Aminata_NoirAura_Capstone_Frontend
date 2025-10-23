@@ -8,7 +8,6 @@ import About from "./pages/about/index.jsx";
 import AuthPage from "./pages/auth/index.jsx";
 import SalonList from "./pages/salons/index.jsx";
 import FavoritesPage from "./pages/favorites/index.jsx";
-import NotFound from "./pages/NotFound.jsx";
 import ProtectedRoutes from "./components/protected_routes/ProtectedRoutes.jsx";
 
 export default function App() {
@@ -38,8 +37,7 @@ export default function App() {
           <Route path="/salons" element={<SalonList />} />
         </Route>
 
-        {/* 404 */}
-        <Route path="*" element={<NotFound />} />
+        
       </Routes>
     </>
   );
