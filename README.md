@@ -116,6 +116,27 @@ backend and frontend both display clear error messages.
 
 Each page is connected to the backend using Axios and React hooks for data fetching and state updates.
 
+## Project Structure
+backend/
+ ├─ src/
+ │   ├─ app.mjs
+ │   ├─ server.mjs
+ │   ├─ db/connect.mjs
+ │   ├─ models/
+ │   ├─ routes/
+ │   ├─ middleware/
+ │   └─ utils/seedSalons.mjs
+frontend/
+ ├─ src/
+ │   ├─ pages/
+ │   ├─ components/
+ │   ├─ contexts/
+ │   ├─ lib/api.js
+ │   └─ App.jsx
+
+**Backend:** [Open the backend folder](./backend/)
+
+
 # How to Run the Project
 1. In you terminal inside the folder you wanna put the project run this command:< Clone the repository
 git clone https://github.com/yourusername/noiraura.git > 
