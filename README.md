@@ -134,7 +134,7 @@ frontend/
  │   ├─ lib/api.js
  │   └─ App.jsx
 
-**Backend:** [Open the backend folder](../backend/)
+**Backend:** [Open the backend folder](https://github.com/Aminalo/Lo_Aminata_NoirAura_Capstone_Backend.git)
 
 
 # How to Run the Project
